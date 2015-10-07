@@ -10,9 +10,14 @@ var Queue = function() {
   // Implement the methods below
 
   someInstance.enqueue = function(value) {
+    storage[rear++] = value;
   };
 
   someInstance.dequeue = function() {
+    if (front >= rear) {
+    } else {
+      return storage[front++];
+    }
   };
 
   someInstance.size = function() {
