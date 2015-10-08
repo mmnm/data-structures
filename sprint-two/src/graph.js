@@ -3,21 +3,38 @@
 // ------------------------
 // Instantiate a new graph
 var Graph = function() {
+  this.nodes = [];
+  this.edges = [];
+  //[0:[0,1,2,3],1:[0,1,2,3],2:[0,1,2,3],3:[0,1,2,3]];
+  //edges[1][2] = true;
+  //edges[2][1] = true;
 };
 
 // ------------------------
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
+  this.nodes.push(node);
 };
 
 // ------------------------
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
+  for (var i = 0; i < this.nodes.length; i++) {
+    if (this.nodes[i] === node) {
+      return true;
+    }
+  }
+  return false;
 };
 
 // ------------------------
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
+  for (var i = 0; i < this.nodes.length; i++) {
+    if(this.nodes[i] === node) {
+      this.nodes.splice(i, 1);
+    }
+  };
 };
 
 // ------------------------
