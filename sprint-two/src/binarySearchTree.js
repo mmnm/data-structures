@@ -42,22 +42,40 @@ BinarySearchTreeMethods.contains = function(value) {
     return false;
   } else {
     while (cur !== null) {
-      if (cur.val === value) {
+      if (cur.value === value) {
         return true;
-      } else if (cur.val > value) {
+      } else if (cur.value > value) {
         cur = cur.left;
       } else {
         cur = cur.right;
       }
     }
   }
+  return false;
 };
-BinarySearchTreeMethods.depthFirstLog = function() {
+BinarySearchTreeMethods.depthFirstLog = function(callback) {
+
+  var cur = this;
+  if(cur === null) {
+    return;
+  }
+
+  callback(cur.value);
+  if(cur.left) {
+    cur.left.depthFirstLog(callback);
+  }
+  if(cur.right) {
+    cur.right.depthFirstLog(callback);
+  }
 
 };
-
 
 
 /*
+
+BinarySearchTreeMethods.depthFirstLog - O(n)
+BinarySearchTreeMethods.contains - O
+
+
  * Complexity: What is the time complexity of the above functions?
  */
